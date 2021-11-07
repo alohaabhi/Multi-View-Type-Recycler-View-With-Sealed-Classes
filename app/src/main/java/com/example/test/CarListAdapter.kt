@@ -11,7 +11,7 @@ enum class CarListViewType {
     ITEM
 }
 
-class CarListAdapter(private val data: List<CarListData>) :
+class CarListAdapter(private val listData: List<CarListData>) :
     RecyclerView.Adapter<CarListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarListViewHolder {
@@ -35,14 +35,14 @@ class CarListAdapter(private val data: List<CarListData>) :
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when (data[position]) {
+        return when (listData[position]) {
             is CarListItem -> CarListViewType.ITEM.ordinal
             is CarListSectionTitle -> CarListViewType.SECTION_TITLE.ordinal
         }
     }
 
     override fun onBindViewHolder(holder: CarListViewHolder, position: Int) {
-        when (val dataForCurrentPosition = data[position]) {
+        when (val dataForCurrentPosition = listData[position]) {
             is CarListItem -> {
                 (holder as CarListItemViewHolder).setData(dataForCurrentPosition)
             }
@@ -53,6 +53,6 @@ class CarListAdapter(private val data: List<CarListData>) :
     }
 
     override fun getItemCount(): Int {
-        return data.size
+        return listData.size
     }
 }
