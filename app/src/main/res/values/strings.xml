@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Test</string>
+    <string name="starting_price">Starting Price</string>
+    <string name="release_year">Release Year</string>
+</resources>
